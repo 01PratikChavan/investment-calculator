@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Header from './components/Header'
+import UserInput from './components/UserInput'
+import ResultData from './components/ResultData';
+import { calculateInvestmentResults } from './util/investment';
+const App = () => {
 
-function App() {
+  const[result,setResult]=useState(null);
+  
+  const handleCalculate=(dataCollected)=>{
+    // console.log('in app component' , dataCollected)
+    // console.log(calculateInvestmentResults(dataCollected))
+     setResult(calculateInvestmentResults(dataCollected));
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+<div>
+
+    <Header />
+
+    
+    <UserInput onCalculate={handleCalculate}  />
+    
+     <ResultData result={result} />
+  
+
+</div>
+    
+  )
 }
 
-export default App;
+export default App
