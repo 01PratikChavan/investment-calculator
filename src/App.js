@@ -14,8 +14,7 @@ const App = () => {
   }
 
   return (
-<div>
-
+<>
     <Header />
 
     
@@ -24,7 +23,7 @@ const App = () => {
      <ResultData result={result} />
   
 
-</div>
+</>
     
   )
 }
